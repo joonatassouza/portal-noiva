@@ -1,0 +1,25 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "overrides": [
+    {
+      "files": ["src/domain/**/*.{ts,tsx}", "src/application/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["@/infrastructure/*", "@/presentation/*"],
+                "message": "Hexagonal boundary: domain and application layers cannot import from infrastructure or presentation."
+              },
+              {
+                "group": ["next", "next/*", "next-intl", "next-intl/*", "react", "react-dom", "mongodb", "@supabase/*"],
+                "message": "Hexagonal boundary: domain and application layers must remain framework- and database-agnostic."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

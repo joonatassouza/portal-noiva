@@ -1,0 +1,68 @@
+/* =====================================================================
+ * Portal Noiva — Design Tokens
+ * ---------------------------------------------------------------------
+ * SINGLE SOURCE OF TRUTH for the visual identity.
+ *
+ * After MVP a professional designer will adjust this file.
+ * Anything visual (colors, typography, radii, spacing scale) lives here.
+ *
+ *  - Tailwind reads these variables (see tailwind.config.ts).
+ *  - Components reference them via Tailwind utilities (text-ink, bg-surface...)
+ *    or via direct `var(--token)` when using inline style.
+ *
+ * RULES:
+ *  1. Never hardcode a color in a component.
+ *  2. Add new tokens here before using them elsewhere.
+ *  3. Dark mode lives below in `:root[data-theme="dark"]`.
+ * ===================================================================== */
+
+:root {
+  /* ----- Brand palette --------------------------------------------- */
+  --color-ink:        #0F2A4A;  /* azul profundo — texto e marca       */
+  --color-ink-soft:   #5A6878;  /* tom secundário                      */
+  --color-gold:       #C9A24A;  /* dourado fosco — acento              */
+  --color-ice:        #F5F2EB;  /* gelo — fundo cálido                  */
+
+  /* ----- Surfaces -------------------------------------------------- */
+  --color-bg:         #FFFFFF;
+  --color-surface:    #F8F7F2;
+  --color-muted:      #6B7280;
+  --color-border:     #E6E2D7;
+
+  /* ----- Semantic -------------------------------------------------- */
+  --color-success:    #2F7A4D;
+  --color-danger:     #B23A3A;
+
+  /* ----- Typography ------------------------------------------------ */
+  --font-sans:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --font-mono:  ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
+
+  /* ----- Radii ----------------------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* ----- Containers ------------------------------------------------ */
+  --container-prose: 65ch;
+  --container-page:  72rem;
+
+  /* ----- Motion ---------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme="dark"] {
+  --color-ink:        #E9EDF4;
+  --color-ink-soft:   #A1A9B8;
+  --color-gold:       #D8B968;
+  --color-ice:        #161B24;
+
+  --color-bg:         #0E121B;
+  --color-surface:    #161B24;
+  --color-muted:      #8A93A4;
+  --color-border:     #2A3140;
+
+  --color-success:    #4FA577;
+  --color-danger:     #D27575;
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Portal Noiva mark">
+  <title>Portal Noiva</title>
+  <g transform="translate(8, 8)">
+    <path d="M 6 76 L 6 38 A 34 34 0 0 1 74 38 L 74 76"
+          fill="none" stroke="#0F2A4A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="0" y1="76" x2="80" y2="76"
+          stroke="#0F2A4A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 40 28
+             C 30 40, 30 50, 40 60
+             C 50 50, 50 40, 40 28 Z"
+          fill="#C9A24A"/>
+    <path d="M 40 38 C 35 45, 35 52, 40 58 C 45 52, 45 45, 40 38 Z"
+          fill="#FFFFFF" opacity="0.55"/>
+  </g>
+</svg>

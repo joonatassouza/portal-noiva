@@ -1,0 +1,562 @@
+{
+  "site": {
+    "tagline": "Igrejas · Cultos · Eventos"
+  },
+  "nav": {
+    "churches": "Igrejas",
+    "events": "Eventos",
+    "map": "Mapa",
+    "about": "Sobre"
+  },
+  "home": {
+    "hero": {
+      "kicker": "Catálogo da Noiva",
+      "title": "Encontre uma igreja da Mensagem perto de você",
+      "subtitle": "Endereços, horários de cultos, transmissões ao vivo e eventos das congregações da Abertura da Palavra."
+    },
+    "searchAria": "Buscar igrejas",
+    "searchPlaceholder": "Buscar por igreja, cidade ou país",
+    "searchSubmit": "Buscar",
+    "sectionsTitle": "O que está acontecendo",
+    "empty": {
+      "title": "Nenhuma igreja cadastrada ainda."
+    }
+  },
+  "upcoming": {
+    "servicesTab": "Próximos cultos",
+    "eventsTab": "Próximos eventos",
+    "feedTab": "Feed",
+    "loading": "Carregando…",
+    "endOfFeed": "Você chegou ao fim por enquanto.",
+    "volunteers": "Aceita voluntários",
+    "servicesEmpty": {
+      "title": "Sem cultos cadastrados",
+      "description": "Quando uma igreja cadastrar seus cultos, eles aparecem aqui."
+    },
+    "eventsEmpty": {
+      "title": "Sem eventos especiais previstos",
+      "description": "Eventos como Páscoa, conferências e retiros aparecem aqui assim que cadastrados."
+    }
+  },
+  "church": {
+    "address": "Endereço",
+    "schedule": "Programação semanal",
+    "upcomingEvents": "Próximos eventos",
+    "mediaTitle": "Mídia recente",
+    "social": "Redes",
+    "support": "Apoie esta igreja",
+    "supportNote": "QR Code informativo. Toda transação acontece fora da plataforma.",
+    "live": "Transmissão",
+    "noServices": "Nenhum culto cadastrado ainda.",
+    "noEvents": "Nenhum evento especial previsto.",
+    "admins": {
+      "title": "Fale com a equipe",
+      "whatsapp": "WhatsApp",
+      "genericName": "Responsável da igreja",
+      "emptyHint": "Os administradores ainda não preencheram o WhatsApp."
+    }
+  },
+  "churches": {
+    "title": "Catálogo de igrejas",
+    "subtitle": "Filtre por país ou busque pelo nome.",
+    "search": {
+      "placeholder": "Buscar por nome, cidade ou descrição"
+    },
+    "filters": {
+      "allCountries": "Todos os países",
+      "country": "País",
+      "results": "{count, plural, =0 {Nenhuma igreja encontrada} =1 {1 igreja} other {# igrejas}}",
+      "clear": "Limpar filtros"
+    },
+    "empty": {
+      "title": "Nenhuma igreja encontrada",
+      "description": "Tente outro termo ou remova os filtros."
+    }
+  },
+  "map": {
+    "title": "Mapa global",
+    "subtitle": "Cada pino é uma igreja cadastrada. Clique para abrir.",
+    "noPins": "Nenhuma igreja com coordenadas cadastradas ainda."
+  },
+  "common": {
+    "viewAll": "Ver todas"
+  },
+  "volunteer": {
+    "cta": "Quero ser voluntário",
+    "loginRequired": "Faça login para se voluntariar.",
+    "signIn": "Entrar",
+    "previouslyCancelled": "Candidatura cancelada — você pode reenviar",
+    "name": "Seu nome (opcional)",
+    "namePlaceholder": "Como gostaria de ser chamado?",
+    "role": "Como você quer ajudar?",
+    "rolePlaceholder": "Ex.: fotografia, som, segurança, infantil…",
+    "message": "Mensagem (opcional)",
+    "messagePlaceholder": "Conte um pouco mais sobre você e sua disponibilidade.",
+    "whatsapp": "Seu WhatsApp",
+    "whatsappShare": "Compartilhar meu WhatsApp com a igreja",
+    "whatsappShared": "Você compartilhou seu WhatsApp com a igreja.",
+    "edit": "Editar",
+    "cancelMy": "Cancelar candidatura",
+    "confirmCancel": "Cancelar sua candidatura para este evento?",
+    "lockedHint": "A igreja já avaliou esta candidatura. Para mudar algo, fale diretamente com a equipe.",
+    "save": "Salvar",
+    "submit": "Enviar",
+    "submitting": "Enviando…",
+    "cancel": "Cancelar",
+    "status": {
+      "SUBMITTED": "Candidatura enviada",
+      "CONTACTED": "Em contato com a equipe",
+      "ACCEPTED": "Aceito",
+      "REJECTED": "Não aceito",
+      "CANCELLED": "Cancelado por você"
+    }
+  },
+  "profile": {
+    "kicker": "Perfil",
+    "title": "Editar perfil",
+    "subtitle": "Seus dados de exibição e contato.",
+    "form": {
+      "email": "E-mail (do Google)",
+      "displayName": "Nome de exibição",
+      "displayNamePlaceholder": "Como você quer aparecer",
+      "whatsapp": "WhatsApp",
+      "whatsappHint": "Inclua o código do país (ex.: +55). Aparece publicamente apenas para igrejas onde você é admin.",
+      "locale": "Idioma preferido",
+      "save": "Salvar",
+      "saving": "Salvando…",
+      "saved": "Perfil atualizado!"
+    }
+  },
+  "notifications": {
+    "aria": "Notificações",
+    "empty": "Sem notificações por enquanto."
+  },
+  "feed": {
+    "comment": "Comentar",
+    "loading": "Carregando…",
+    "endOfFeed": "Você chegou ao fim por enquanto.",
+    "empty": {
+      "title": "Sem postagens ainda",
+      "description": "Quando uma igreja postar fotos ou álbuns, eles aparecem aqui."
+    },
+    "report": {
+      "button": "Denunciar",
+      "title": "O que há de errado com este post?",
+      "placeholder": "Descreva o motivo (opcional)",
+      "submit": "Enviar denúncia",
+      "sending": "Enviando…",
+      "sent": "Denúncia enviada",
+      "cancel": "Cancelar",
+      "error": "Não foi possível enviar a denúncia."
+    }
+  },
+  "post": {
+    "genericTitle": "Postagem",
+    "albumLinkHint": "Este post leva para um álbum externo.",
+    "comments": "{count, plural, =0 {Nenhum comentário} =1 {1 comentário} other {# comentários}}",
+    "type": {
+      "ALBUM_LINK": "Álbum",
+      "IMAGE_GALLERY": "Galeria"
+    },
+    "comment": {
+      "loginRequired": "Faça login para comentar.",
+      "signIn": "Entrar",
+      "placeholder": "Escreva um comentário…",
+      "remaining": "{count} caracteres restantes",
+      "submit": "Comentar",
+      "submitting": "Enviando…",
+      "delete": "Excluir",
+      "confirmDelete": "Excluir este comentário?",
+      "empty": "Seja o primeiro a comentar."
+    },
+    "share": {
+      "button": "Compartilhar link",
+      "copied": "Copiado!"
+    }
+  },
+  "proposal": {
+    "kicker": "Cadastrar igreja",
+    "title": "Cadastrar uma nova igreja",
+    "subtitle": "Não encontrou sua igreja no catálogo? Preencha os dados — o master admin revisa e aprova.",
+    "submittedTitle": "Recebemos sua proposta",
+    "submittedSubtitle": "Vamos revisar em breve.",
+    "submittedBody": "Você será notificado in-app assim que a proposta for aprovada ou rejeitada. Se aprovada, você vira o owner da igreja automaticamente.",
+    "backToCatalog": "Voltar ao catálogo",
+    "catalogCta": {
+      "title": "Não encontrou sua igreja?",
+      "subtitle": "Cadastre uma nova. O master admin revisa e, se aprovado, você vira owner automaticamente.",
+      "button": "Cadastrar igreja"
+    },
+    "form": {
+      "aboutChurch": "Dados da igreja",
+      "name": "Nome da igreja",
+      "description": "Descrição (opcional)",
+      "physicalAddress": "Endereço físico",
+      "city": "Cidade",
+      "country": "País",
+      "coordsOptional": "Opcional",
+      "geocode": "Buscar coordenadas",
+      "geocoding": "Buscando…",
+      "geocodeNotFound": "Endereço não encontrado.",
+      "geocodeHint": "Usamos OpenStreetMap. Se não achar, você pode deixar em branco.",
+      "digital": "Presença digital (opcional)",
+      "website": "Site",
+      "aboutYou": "Sobre você",
+      "proposerName": "Seu nome",
+      "proposerNamePlaceholder": "Como você quer ser chamado",
+      "evidenceLabel": "Quem é você nesta igreja?",
+      "evidencePlaceholder": "Sou o pastor / secretário / responsável pela mídia. Frequento desde X. Posso ser contatado em…",
+      "evidenceHint": "Mínimo 20 caracteres. Quanto mais contexto, mais rápido aprovamos.",
+      "linksLabel": "Links de prova (um por linha, opcional)",
+      "submit": "Enviar proposta",
+      "submitting": "Enviando…"
+    }
+  },
+  "auth": {
+    "signIn": "Entrar",
+    "signInWithGoogle": "Entrar com Google",
+    "signOut": "Sair",
+    "account": "Minha conta",
+    "myDashboard": "Meu painel",
+    "myProfile": "Editar perfil",
+    "masterAdmin": "Painel master",
+    "loginPrompt": "Faça login para favoritar uma igreja",
+    "favorite": "Favoritar",
+    "unfavorite": "Remover dos favoritos"
+  },
+  "panel": {
+    "title": "Meu painel",
+    "subtitle": "Próximos cultos e eventos das igrejas que você acompanha.",
+    "panelLabel": "Painel da igreja",
+    "infoNotice": "Editar a informação pública da sua igreja. Edições aparecem imediatamente para visitantes.",
+    "tabs": {
+      "services": "Cultos",
+      "events": "Eventos",
+      "volunteers": "Voluntários",
+      "info": "Informações",
+      "team": "Equipe",
+      "media": "Mídia"
+    },
+    "media": {
+      "title": "Mídia",
+      "new": "Novo post",
+      "view": "Ver",
+      "delete": "Excluir",
+      "confirmDelete": "Excluir este post (e todos os comentários)?",
+      "imageCount": "{count, plural, =1 {1 imagem} other {# imagens}}",
+      "type": {
+        "ALBUM_LINK": "Álbum (link)",
+        "IMAGE_GALLERY": "Galeria de imagens"
+      },
+      "needEvent": {
+        "title": "Cadastre um evento primeiro",
+        "description": "Posts de mídia precisam estar ligados a um evento (culto regular ou especial).",
+        "cta": "Ir para Eventos"
+      },
+      "empty": {
+        "title": "Nenhum post ainda",
+        "description": "Comece publicando um link de álbum (Facebook, Flickr, Instagram) ou enviando imagens da igreja."
+      },
+      "form": {
+        "event": "Evento (opcional)",
+        "eventNone": "(Sem vínculo com evento)",
+        "eventHint": "Você pode publicar mídia geral da igreja ou vincular a um culto/evento específico.",
+        "type": "Tipo de post",
+        "albumLink": "Link de álbum externo",
+        "imageGallery": "Galeria de imagens (envio direto)",
+        "externalUrl": "URL do álbum",
+        "externalUrlHint": "Cole o link público do álbum no Facebook, Flickr, Instagram, etc.",
+        "images": "Imagens",
+        "imagesHint": "Até {max} imagens. Comprimimos para WebP ≤ 200 KB no seu navegador antes de enviar.",
+        "selectedCount": "{count, plural, =1 {1 imagem selecionada} other {# imagens selecionadas}}",
+        "uploading": "Enviando {done} de {total}…",
+        "caption": "Descrição (opcional)",
+        "save": "Publicar",
+        "saving": "Publicando…",
+        "cancel": "Cancelar"
+      }
+    },
+    "volunteers": {
+      "title": "Voluntários",
+      "empty": {
+        "title": "Nenhuma candidatura ainda",
+        "description": "Voluntários aparecem aqui quando alguém se inscreve em eventos com 'Aceita voluntários'."
+      },
+      "status": {
+        "SUBMITTED": "Submetido",
+        "CONTACTED": "Em contato",
+        "ACCEPTED": "Aceito",
+        "REJECTED": "Rejeitado"
+      },
+      "notesPlaceholder": "Notas internas (opcional)",
+      "apply": "Aplicar",
+      "saving": "Salvando…",
+      "saved": "Salvo!"
+    },
+    "services": {
+      "title": "Cultos recorrentes",
+      "new": "Novo culto",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "confirmDelete": "Excluir este culto?",
+      "live": "Transmissão",
+      "summary": {
+        "weekly": "Toda {day}",
+        "monthlyNth": "{nth, selectordinal, one {1º} two {2º} few {3º} other {#º}} {day} do mês",
+        "monthlyLast": "Último {day} do mês"
+      },
+      "day": {
+        "0": "Domingo",
+        "1": "Segunda",
+        "2": "Terça",
+        "3": "Quarta",
+        "4": "Quinta",
+        "5": "Sexta",
+        "6": "Sábado"
+      },
+      "form": {
+        "label": "Nome do culto",
+        "startTime": "Início",
+        "endTime": "Fim (opcional)",
+        "recurrence": "Recorrência",
+        "kind": "Tipo",
+        "weekly": "Semanal",
+        "monthly": "Mensal (n-ésimo dia da semana)",
+        "nth": "Posição",
+        "nthOptions": {
+          "1": "Primeiro",
+          "2": "Segundo",
+          "3": "Terceiro",
+          "4": "Quarto",
+          "last": "Último"
+        },
+        "dayOfWeek": "Dia da semana",
+        "day": {
+          "0": "Domingo",
+          "1": "Segunda",
+          "2": "Terça",
+          "3": "Quarta",
+          "4": "Quinta",
+          "5": "Sexta",
+          "6": "Sábado"
+        },
+        "hasLiveStream": "Este culto é transmitido ao vivo",
+        "save": "Salvar",
+        "saving": "Salvando…",
+        "cancel": "Cancelar",
+        "rules": {
+          "title": "Cancelar automaticamente quando…",
+          "hint": "Cria uma regra permanente. Ex.: 'Cancelar este culto quando Santa Ceia ocorrer +1 dia'. As datas afetadas aparecem destacadas no calendário abaixo.",
+          "noPeers": "Cadastre outros cultos primeiro para criar regras dependentes.",
+          "selectTrigger": "Selecione um culto…",
+          "offsetPlaceholder": "Dias (+/-)",
+          "reasonPlaceholder": "Motivo (opcional)",
+          "add": "Adicionar regra",
+          "remove": "Remover"
+        }
+      },
+      "occurrences": {
+        "title": "Próximas 12 semanas",
+        "hint": "Clique em uma data para cancelar / reativar manualmente. Datas auto-canceladas por regra são marcadas em dourado e só somem se você editar a regra.",
+        "cancelled": "Cancelado",
+        "autoCancelled": "Auto",
+        "autoCancelledTooltip": "Cancelado por regra dependente.",
+        "toggleCancel": "Cancelar"
+      }
+    },
+    "events": {
+      "title": "Eventos especiais",
+      "new": "Novo evento",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "confirmDelete": "Excluir este evento?",
+      "acceptingVolunteers": "Aceita voluntários",
+      "form": {
+        "title": "Título",
+        "description": "Descrição",
+        "startDatetime": "Início",
+        "endDatetime": "Fim (opcional)",
+        "location": "Local (se diferente da igreja)",
+        "acceptingVolunteers": "Aceita voluntários para este evento",
+        "save": "Salvar",
+        "saving": "Salvando…",
+        "cancel": "Cancelar"
+      }
+    },
+    "team": {
+      "inviteTitle": "Convidar membro",
+      "inviteSubtitle": "Gere um link de convite com validade de 7 dias.",
+      "emailPlaceholder": "email@exemplo.com",
+      "generate": "Gerar link",
+      "generating": "Gerando…",
+      "issued": "Convite gerado. Compartilhe o link com a pessoa.",
+      "copy": "Copiar link",
+      "copied": "Copiado!",
+      "openWhatsApp": "Abrir WhatsApp",
+      "whatsappMessage": "Olá! Você foi convidado para ajudar a administrar a página da igreja {church} no Portal Noiva como {role}. Aceite aqui: {url}",
+      "membersTitle": "Membros atuais",
+      "noMembers": "Nenhum membro além do owner ainda.",
+      "invitationsTitle": "Convites",
+      "noInvitations": "Nenhum convite enviado.",
+      "roles": {
+        "OWNER": "Owner",
+        "EDITOR_ADMIN": "Editor (cultos, eventos, info)",
+        "MEDIA_EDITOR": "Editor de mídia"
+      }
+    },
+    "empty": {
+      "title": "Você ainda não favoritou nenhuma igreja",
+      "description": "Use o ícone de coração na página de uma igreja para começar a acompanhá-la.",
+      "cta": "Ver catálogo"
+    },
+    "managed": {
+      "title": "Igrejas que você administra",
+      "subtitle": "Acesso direto ao painel de cada igreja onde você é owner ou editor.",
+      "openPanel": "Abrir painel"
+    }
+  },
+  "admin": {
+    "panel": "Painel master",
+    "overview": "Visão geral",
+    "overviewSubtitle": "Cadastros, claims pendentes e estado da plataforma.",
+    "churches": "Igrejas",
+    "claims": "Claims",
+    "proposals": "Propostas",
+    "proposalsSubtitle": "Cadastros de novas igrejas pendentes de aprovação.",
+    "proposalsEmpty": "Nenhuma proposta pendente.",
+    "claimsSubtitle": "Solicitações pendentes de ownership.",
+    "claimsEmpty": "Nenhum claim pendente.",
+    "newChurch": "Nova igreja",
+    "edit": "Editar",
+    "viewPublic": "Ver pública",
+    "approve": "Aprovar",
+    "reject": "Rejeitar",
+    "reviewNotesPlaceholder": "Notas internas (opcional)",
+    "totals": {
+      "churches": "Igrejas cadastradas",
+      "pendingClaims": "Claims pendentes",
+      "pendingProposals": "Propostas pendentes"
+    },
+    "churchForm": {
+      "basics": "Dados básicos",
+      "name": "Nome",
+      "slug": "Slug (URL)",
+      "description": "Descrição",
+      "location": "Localização",
+      "physicalAddress": "Endereço físico",
+      "city": "Cidade",
+      "country": "País",
+      "geocode": "Buscar coordenadas",
+      "geocoding": "Buscando…",
+      "geocodeNotFound": "Endereço não encontrado.",
+      "geocodeHint": "Usa OpenStreetMap. Limite de 1 req/s.",
+      "digital": "Presença digital",
+      "website": "Site",
+      "pix": "PIX (informativo)",
+      "pixKey": "Chave PIX",
+      "pixQrcodeImageUrl": "URL da imagem do QR Code",
+      "pixHint": "A chave e o QR são exibidos para visitantes. Nenhuma transação acontece pelo sistema.",
+      "save": "Salvar",
+      "saving": "Salvando…"
+    }
+  },
+  "claim": {
+    "kicker": "Reivindicação",
+    "title": "Reivindicar {church}",
+    "subtitle": "Conte-nos quem você é dentro desta igreja. O master admin vai revisar.",
+    "evidenceLabel": "Quem é você nesta igreja?",
+    "evidencePlaceholder": "Sou o pastor / secretário / responsável pela mídia. Frequento desde X. Posso ser contatado em…",
+    "evidenceHint": "Mínimo 20 caracteres. Quanto mais contexto, mais rápido aprovamos.",
+    "linksLabel": "Links de prova (um por linha)",
+    "submit": "Enviar solicitação",
+    "submitting": "Enviando…",
+    "cta": {
+      "title": "É responsável por esta igreja?",
+      "subtitle": "Reivindique e ganhe acesso para editar cultos, eventos e dados da igreja.",
+      "button": "Reivindicar",
+      "pendingBadge": "Sua reivindicação está em análise",
+      "pendingDesc": "Você será notificado in-app assim que o master admin revisar."
+    },
+    "panelCta": {
+      "title": "Você administra esta igreja",
+      "subtitle": "Acesse o painel para editar cultos, eventos, equipe e PIX.",
+      "button": "Abrir painel"
+    }
+  },
+  "invite": {
+    "kicker": "Convite",
+    "title": "Convite para {church}",
+    "titleGeneric": "Convite",
+    "subtitle": "Você foi convidado como {role} para o e-mail {email}.",
+    "loginPrompt": "Faça login com {email} para aceitar.",
+    "signIn": "Entrar",
+    "accept": "Aceitar convite",
+    "accepting": "Aceitando…",
+    "accepted": "Convite aceito!",
+    "viewChurch": "Ver página pública da igreja",
+    "expiredDesc": "Este convite expirou. Peça um novo ao owner da igreja.",
+    "consumedDesc": "Este convite já foi utilizado.",
+    "emailMismatch": "Você está logado como {logged}, mas o convite é para {expected}.",
+    "emailMismatchShort": "E-mail diferente do convite.",
+    "switchAccountHint": "Saia da conta atual e entre com o e-mail certo para aceitar.",
+    "invalidTitle": "Convite inválido",
+    "invalidDesc": "Este link não corresponde a nenhum convite ativo.",
+    "status": {
+      "PENDING": "Pendente",
+      "ACCEPTED": "Aceito",
+      "CANCELLED": "Cancelado",
+      "EXPIRED": "Expirado",
+      "INVALID": "Inválido"
+    }
+  },
+  "days": {
+    "0": "Domingo",
+    "1": "Segunda",
+    "2": "Terça",
+    "3": "Quarta",
+    "4": "Quinta",
+    "5": "Sexta",
+    "6": "Sábado"
+  },
+  "schedule": {
+    "weekly": "Toda {day}",
+    "monthlyNth": "{nth, selectordinal, one {1º} two {2º} few {3º} other {#º}} {day} do mês",
+    "monthlyLast": "Último {day} do mês",
+    "exceptions": "{count, plural, =1 {1 data com exceção} other {# datas com exceção}}"
+  },
+  "footer": {
+    "rights": "Sem fins lucrativos. Sem anúncios. Sem taxas.",
+    "osm": "Mapas © contribuidores do OpenStreetMap",
+    "privacy": "Privacidade"
+  },
+  "privacy": {
+    "kicker": "Política de privacidade",
+    "title": "Como tratamos seus dados",
+    "subtitle": "Resumo direto: o mínimo necessário, sem venda de dados, sem rastreamento de terceiros.",
+    "s1": {
+      "title": "Dados que coletamos",
+      "body": "Quando você faz login com Google: seu e-mail, nome de exibição e foto de perfil pública. Quando preenche seu perfil: número de WhatsApp opcional. Quando se candidata a voluntariado: o conteúdo que você digitou e, se autorizar, o WhatsApp."
+    },
+    "s2": {
+      "title": "Como usamos",
+      "body": "Identificar você na plataforma, exibir seu nome em comentários/posts/contatos da igreja, permitir que administradores de igreja entrem em contato (caso você compartilhe WhatsApp), e enviar notificações in-app sobre suas ações. Não vendemos dados. Não compartilhamos com anunciantes. Não há anunciantes."
+    },
+    "s3": {
+      "title": "O que aparece publicamente",
+      "body": "Comentários em posts: seu nome e o texto do comentário. Posts de mídia: seu nome se você for o autor. Página da igreja em que você é OWNER ou EDITOR_ADMIN: seu nome de exibição e seu WhatsApp (se preenchido), para que visitantes possam entrar em contato."
+    },
+    "s4": {
+      "title": "Cookies",
+      "body": "Cookies de sessão para manter você logado. Sem cookies de rastreamento, sem analytics de terceiros."
+    },
+    "s5": {
+      "title": "Retenção e exclusão",
+      "body": "Seus dados ficam enquanto sua conta existir. Para excluir, escreva para o e-mail de contato abaixo informando o e-mail da sua conta. Aplicações de voluntariado e comentários ficam preservados após a exclusão da conta apenas como histórico anônimo (autor=excluído)."
+    },
+    "s6": {
+      "title": "Contato",
+      "body": "Para qualquer dúvida ou pedido relacionado aos seus dados, escreva para: contato@dominio.org"
+    },
+    "lastUpdated": "Última atualização: 27 de abril de 2026"
+  }
+}

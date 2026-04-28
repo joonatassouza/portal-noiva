@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+dist
+.DS_Store
+*.log
+coverage
+.vercel
+.tsbuildinfo
+next-env.d.ts
+
+# Env files — ignore everything, only the template (`.env.example`) is tracked.
+.env*
+!.env.example

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-label="Portal Noiva">
+  <title>Portal Noiva</title>
+  <defs>
+    <style>
+      .ink { fill: none; stroke: #0F2A4A; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .gold { fill: #C9A24A; }
+      .word-main { font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif; font-weight: 500; font-size: 34px; fill: #0F2A4A; letter-spacing: 0.06em; }
+      .word-sub { font-family: 'Inter', system-ui, sans-serif; font-weight: 400; font-size: 9px; fill: #5A6878; letter-spacing: 0.42em; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <!-- Mark: arched portal with inner flame -->
+  <g transform="translate(20, 20)">
+    <!-- Portal arch -->
+    <path class="ink" d="M 10 78 L 10 40 A 30 30 0 0 1 70 40 L 70 78" />
+    <!-- Threshold line -->
+    <line class="ink" x1="4" y1="78" x2="76" y2="78" />
+    <!-- Flame inside the arch (pillar of fire) -->
+    <path class="gold" d="M 40 32
+                          C 32 42, 32 50, 40 58
+                          C 48 50, 48 42, 40 32 Z" />
+    <!-- Inner flame highlight -->
+    <path d="M 40 40 C 36 46, 36 52, 40 56 C 44 52, 44 46, 40 40 Z" fill="#FFFFFF" opacity="0.55"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(115, 0)">
+    <text class="word-main" x="0" y="62">Portal Noiva</text>
+    <text class="word-sub" x="2" y="82">Igrejas · Cultos · Eventos</text>
+  </g>
+</svg>
