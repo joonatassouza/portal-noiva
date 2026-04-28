@@ -10,6 +10,7 @@ import { Card } from '@/presentation/components/ui/Card';
 import { EmptyState } from '@/presentation/components/ui/EmptyState';
 import { fetchUpcomingEvents } from '@/app/_actions/upcoming';
 import { groupByDay, formatDayHeading, formatTimeOnly } from '@/shared/dayGroups';
+import { WatchLiveLink } from '@/presentation/components/WatchLiveLink';
 
 interface UpcomingEventsFeedProps {
   locale: string;
@@ -95,9 +96,17 @@ export function UpcomingEventsFeed({ locale, initial }: UpcomingEventsFeedProps)
                     {event.description && (
                       <p className="mt-2 line-clamp-2 text-sm text-ink-soft">{event.description}</p>
                     )}
-                    {event.acceptingVolunteers && (
-                      <div className="mt-3">
-                        <Badge tone="gold">{t('upcoming.volunteers')}</Badge>
+                    {(event.acceptingVolunteers || church.youtubeUrl) && (
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
+                        {event.acceptingVolunteers && (
+                          <Badge tone="gold">{t('upcoming.volunteers')}</Badge>
+                        )}
+                        {church.youtubeUrl && (
+                          <WatchLiveLink
+                            youtubeUrl={church.youtubeUrl}
+                            label={t('church.watchLive')}
+                          />
+                        )}
                       </div>
                     )}
                   </Card>

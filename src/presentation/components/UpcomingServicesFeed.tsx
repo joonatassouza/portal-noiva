@@ -5,11 +5,11 @@ import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { UpcomingServiceItem } from '@/application/use-cases/ListUpcomingServices';
-import { Badge } from '@/presentation/components/ui/Badge';
 import { Card } from '@/presentation/components/ui/Card';
 import { EmptyState } from '@/presentation/components/ui/EmptyState';
 import { fetchUpcomingServices } from '@/app/_actions/upcoming';
 import { groupByDay, formatDayHeading, formatTimeOnly } from '@/shared/dayGroups';
+import { WatchLiveLink } from '@/presentation/components/WatchLiveLink';
 
 interface UpcomingServicesFeedProps {
   locale: string;
@@ -100,8 +100,17 @@ export function UpcomingServicesFeed({ locale, initial }: UpcomingServicesFeedPr
                         {item.church.name} · {item.church.city}
                       </p>
                       {item.service.hasLiveStream && (
-                        <div className="mt-3">
-                          <Badge tone="gold">{t('church.live')}</Badge>
+                        <div className="mt-3 flex flex-wrap items-center gap-2">
+                          {item.church.youtubeUrl ? (
+                            <WatchLiveLink
+                              youtubeUrl={item.church.youtubeUrl}
+                              label={t('church.watchLive')}
+                            />
+                          ) : (
+                            <span className="inline-flex items-center rounded-full border border-gold/40 bg-gold/10 px-2.5 py-1 text-xs font-medium text-gold">
+                              {t('church.live')}
+                            </span>
+                          )}
                         </div>
                       )}
                     </Card>

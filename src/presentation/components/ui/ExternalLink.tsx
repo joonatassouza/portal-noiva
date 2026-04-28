@@ -1,5 +1,6 @@
 import { AnchorHTMLAttributes, ReactNode } from 'react';
 import { cx } from './cx';
+import { toExternalHref } from '@/shared/url';
 
 type ExternalLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children: ReactNode;
@@ -7,15 +8,22 @@ type ExternalLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   showArrow?: boolean;
 };
 
-/** Anchor tag for external URLs — adds rel/target and a small arrow glyph. */
+/**
+ * Anchor tag for external URLs.
+ * Defensive: normalizes the href so callers can pass user-typed values like
+ * `youtube.com/@foo` without producing a broken relative path.
+ */
 export function ExternalLink({
   children,
   className,
   showArrow = true,
+  href,
   ...rest
 }: ExternalLinkProps) {
+  const safeHref = toExternalHref(typeof href === 'string' ? href : undefined);
   return (
     <a
+      href={safeHref}
       target="_blank"
       rel="noopener noreferrer"
       className={cx('text-ink underline-offset-4 hover:text-gold', className)}

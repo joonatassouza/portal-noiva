@@ -14,6 +14,7 @@ import { CommentList } from '@/presentation/components/CommentList';
 import { CommentForm } from '@/presentation/components/CommentForm';
 import { ShareLinkButton } from '@/presentation/components/ShareLinkButton';
 import { ReportPostButton } from '@/presentation/components/ReportPostButton';
+import { PostGallery } from '@/presentation/components/PostGallery';
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string; postId: string }>;
@@ -89,20 +90,7 @@ export default async function MediaPostPage({ params }: PageProps) {
             )}
 
             {post.type === 'IMAGE_GALLERY' && post.images.length > 0 && (
-              <ul className="grid gap-2 sm:grid-cols-2">
-                {post.images.map((img, i) => (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <li key={img.url} className="overflow-hidden rounded-md border border-border bg-bg">
-                    {/* Native <img> avoids configuring remotePatterns for arbitrary S3 buckets. */}
-                    <img
-                      src={img.url}
-                      alt={img.alt ?? `${post.caption ?? 'imagem'} ${i + 1}`}
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                  </li>
-                ))}
-              </ul>
+              <PostGallery images={post.images} caption={post.caption} />
             )}
 
             {post.caption && <p className="whitespace-pre-wrap text-sm text-ink">{post.caption}</p>}

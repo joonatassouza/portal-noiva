@@ -6,7 +6,10 @@ import { Event } from '@/domain/entities/Event';
 
 export interface UpcomingEventItem {
   event: Event;
-  church: Pick<Church, 'id' | 'slug' | 'name' | 'city' | 'country'>;
+  church: Pick<Church, 'id' | 'slug' | 'name' | 'city' | 'country'> & {
+    /** For "Assistir ao vivo" link from feed cards. */
+    youtubeUrl?: string;
+  };
 }
 
 export class ListUpcomingEvents {
@@ -35,7 +38,14 @@ export class ListUpcomingEvents {
       if (!c) continue;
       items.push({
         event,
-        church: { id: c.id, slug: c.slug, name: c.name, city: c.city, country: c.country },
+        church: {
+          id: c.id,
+          slug: c.slug,
+          name: c.name,
+          city: c.city,
+          country: c.country,
+          youtubeUrl: c.social?.youtubeUrl,
+        },
       });
     }
     return { items, nextCursor: page.nextCursor };

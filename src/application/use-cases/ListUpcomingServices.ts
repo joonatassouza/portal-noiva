@@ -15,7 +15,10 @@ export interface UpcomingServiceItem {
    * already merged with any matching OVERRIDE exception for this date.
    */
   service: Service;
-  church: Pick<Church, 'id' | 'slug' | 'name' | 'city' | 'country'>;
+  church: Pick<Church, 'id' | 'slug' | 'name' | 'city' | 'country'> & {
+    /** Surfaced so the feed card can offer "Assistir ao vivo" without an extra fetch. */
+    youtubeUrl?: string;
+  };
 }
 
 const DEFAULT_WEEKS_AHEAD = 8;
@@ -97,7 +100,14 @@ export class ListUpcomingServices {
       return {
         occursAt: p.occursAt.toISOString(),
         service: p.service,
-        church: { id: c.id, slug: c.slug, name: c.name, city: c.city, country: c.country },
+        church: {
+          id: c.id,
+          slug: c.slug,
+          name: c.name,
+          city: c.city,
+          country: c.country,
+          youtubeUrl: c.social?.youtubeUrl,
+        },
       };
     });
 
