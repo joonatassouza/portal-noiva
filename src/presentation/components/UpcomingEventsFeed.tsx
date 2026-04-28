@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { UpcomingEventItem } from '@/application/use-cases/ListUpcomingEvents';
 import { Badge } from '@/presentation/components/ui/Badge';
 import { Card } from '@/presentation/components/ui/Card';
 import { EmptyState } from '@/presentation/components/ui/EmptyState';
 import { fetchUpcomingEvents } from '@/app/_actions/upcoming';
+import { groupByDay, formatDayHeading, formatTimeOnly } from '@/shared/dayGroups';
 
 interface UpcomingEventsFeedProps {
   locale: string;
@@ -51,63 +52,71 @@ export function UpcomingEventsFeed({ locale, initial }: UpcomingEventsFeedProps)
     return () => observer.disconnect();
   }, [cursor, loadMore]);
 
+  const dayLabels = useMemo(
+    () => ({ today: t('upcoming.day.today'), tomorrow: t('upcoming.day.tomorrow') }),
+    [t],
+  );
+  const groups = useMemo(
+    () => groupByDay(items, ({ event }) => new Date(event.startDatetime)),
+    [items],
+  );
+
   if (items.length === 0) {
     return <EmptyState title={t('upcoming.eventsEmpty.title')} description={t('upcoming.eventsEmpty.description')} />;
   }
 
   return (
-    <div>
-      <ul className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-        {items.map(({ event, church }) => (
-          <li key={event.id}>
-            <Link
-              href={`/${locale}/igreja/${church.slug}`}
-              className="group block hover:no-underline"
-            >
-              <Card interactive pad="md" as="article" className="h-full">
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-gold">
-                  {formatDate(new Date(event.startDatetime), locale)}
-                </p>
-                <h3 className="mt-2 font-serif text-lg leading-tight text-ink group-hover:text-gold sm:text-xl">
-                  {event.title}
-                </h3>
-                <p className="mt-1 text-sm text-muted">
-                  {church.name} · {church.city}
-                </p>
-                {event.description && (
-                  <p className="mt-2 line-clamp-2 text-sm text-ink-soft">{event.description}</p>
-                )}
-                {event.acceptingVolunteers && (
-                  <div className="mt-3">
-                    <Badge tone="gold">{t('upcoming.volunteers')}</Badge>
-                  </div>
-                )}
-              </Card>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div className="space-y-8">
+      {groups.map((group) => (
+        <section key={group.dayKey} aria-labelledby={`day-event-${group.dayKey}`}>
+          <h3
+            id={`day-event-${group.dayKey}`}
+            className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-gold"
+          >
+            {formatDayHeading(group.date, locale, dayLabels)}
+          </h3>
+          <ul className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            {group.items.map(({ event, church }) => (
+              <li key={event.id}>
+                <Link
+                  href={`/${locale}/igreja/${church.slug}`}
+                  className="group block hover:no-underline"
+                >
+                  <Card interactive pad="md" as="article" className="h-full">
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
+                      {formatTimeOnly(new Date(event.startDatetime), locale)}
+                    </p>
+                    <h4 className="mt-2 font-serif text-lg leading-tight text-ink group-hover:text-gold sm:text-xl">
+                      {event.title}
+                    </h4>
+                    <p className="mt-1 text-sm text-muted">
+                      {church.name} · {church.city}
+                    </p>
+                    {event.description && (
+                      <p className="mt-2 line-clamp-2 text-sm text-ink-soft">{event.description}</p>
+                    )}
+                    {event.acceptingVolunteers && (
+                      <div className="mt-3">
+                        <Badge tone="gold">{t('upcoming.volunteers')}</Badge>
+                      </div>
+                    )}
+                  </Card>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
 
       {cursor && (
-        <div ref={sentinelRef} className="mt-6 flex h-12 items-center justify-center text-sm text-muted">
+        <div ref={sentinelRef} className="mt-2 flex h-12 items-center justify-center text-sm text-muted">
           {loading ? t('upcoming.loading') : ' '}
         </div>
       )}
       {!cursor && items.length > 0 && (
-        <p className="mt-6 text-center text-xs text-muted">{t('upcoming.endOfFeed')}</p>
+        <p className="mt-2 text-center text-xs text-muted">{t('upcoming.endOfFeed')}</p>
       )}
       {error && <p className="mt-3 text-center text-sm text-danger">{error}</p>}
     </div>
   );
-}
-
-function formatDate(date: Date, locale: string): string {
-  const fmt = new Intl.DateTimeFormat(locale, {
-    weekday: 'short',
-    day: '2-digit',
-    month: 'short',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-  return fmt.format(date);
 }

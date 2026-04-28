@@ -29,6 +29,10 @@
     "loading": "Cargando…",
     "endOfFeed": "Has llegado al final por ahora.",
     "volunteers": "Acepta voluntarios",
+    "day": {
+      "today": "Hoy",
+      "tomorrow": "Mañana"
+    },
     "servicesEmpty": {
       "title": "Sin cultos registrados",
       "description": "Cuando una iglesia registre sus cultos, aparecerán aquí."

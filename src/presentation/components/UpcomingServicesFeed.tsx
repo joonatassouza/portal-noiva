@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { UpcomingServiceItem } from '@/application/use-cases/ListUpcomingServices';
 import { Badge } from '@/presentation/components/ui/Badge';
 import { Card } from '@/presentation/components/ui/Card';
 import { EmptyState } from '@/presentation/components/ui/EmptyState';
 import { fetchUpcomingServices } from '@/app/_actions/upcoming';
+import { groupByDay, formatDayHeading, formatTimeOnly } from '@/shared/dayGroups';
 
 interface UpcomingServicesFeedProps {
   locale: string;
@@ -16,9 +17,9 @@ interface UpcomingServicesFeedProps {
 }
 
 /**
- * Chronological feed of next service occurrences.
- * Loads 10 at a time. IntersectionObserver fetches the next page when the
- * sentinel becomes visible.
+ * Chronological feed of next service occurrences, bucketed by local day so
+ * scanning by date is one glance instead of reading every card. Pages of 10
+ * are appended via IntersectionObserver and re-grouped on each render.
  */
 export function UpcomingServicesFeed({ locale, initial }: UpcomingServicesFeedProps) {
   const t = useTranslations();
@@ -56,63 +57,71 @@ export function UpcomingServicesFeed({ locale, initial }: UpcomingServicesFeedPr
     return () => observer.disconnect();
   }, [cursor, loadMore]);
 
+  const dayLabels = useMemo(
+    () => ({ today: t('upcoming.day.today'), tomorrow: t('upcoming.day.tomorrow') }),
+    [t],
+  );
+  const groups = useMemo(
+    () => groupByDay(items, (it) => new Date(it.occursAt)),
+    [items],
+  );
+
   if (items.length === 0) {
     return <EmptyState title={t('upcoming.servicesEmpty.title')} description={t('upcoming.servicesEmpty.description')} />;
   }
 
   return (
-    <div>
-      <ul className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-        {items.map((item) => {
-          const occursAt = new Date(item.occursAt);
-          return (
-            <li key={`${item.service.id}-${item.occursAt}`}>
-              <Link
-                href={`/${locale}/igreja/${item.church.slug}`}
-                className="group block hover:no-underline"
-              >
-                <Card interactive pad="md" as="article" className="h-full">
-                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-gold">
-                    {formatHeader(occursAt, locale)}
-                  </p>
-                  <h3 className="mt-2 font-serif text-lg leading-tight text-ink group-hover:text-gold sm:text-xl">
-                    {item.service.label}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted">
-                    {item.church.name} · {item.church.city}
-                  </p>
-                  {item.service.hasLiveStream && (
-                    <div className="mt-3">
-                      <Badge tone="gold">{t('church.live')}</Badge>
-                    </div>
-                  )}
-                </Card>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+    <div className="space-y-8">
+      {groups.map((group) => (
+        <section key={group.dayKey} aria-labelledby={`day-${group.dayKey}`}>
+          <h3
+            id={`day-${group.dayKey}`}
+            className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-gold"
+          >
+            {formatDayHeading(group.date, locale, dayLabels)}
+          </h3>
+          <ul className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            {group.items.map((item) => {
+              const occursAt = new Date(item.occursAt);
+              return (
+                <li key={`${item.service.id}-${item.occursAt}`}>
+                  <Link
+                    href={`/${locale}/igreja/${item.church.slug}`}
+                    className="group block hover:no-underline"
+                  >
+                    <Card interactive pad="md" as="article" className="h-full">
+                      <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
+                        {formatTimeOnly(occursAt, locale)}
+                      </p>
+                      <h4 className="mt-2 font-serif text-lg leading-tight text-ink group-hover:text-gold sm:text-xl">
+                        {item.service.label}
+                      </h4>
+                      <p className="mt-1 text-sm text-muted">
+                        {item.church.name} · {item.church.city}
+                      </p>
+                      {item.service.hasLiveStream && (
+                        <div className="mt-3">
+                          <Badge tone="gold">{t('church.live')}</Badge>
+                        </div>
+                      )}
+                    </Card>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
 
       {cursor && (
-        <div ref={sentinelRef} className="mt-6 flex h-12 items-center justify-center text-sm text-muted">
+        <div ref={sentinelRef} className="mt-2 flex h-12 items-center justify-center text-sm text-muted">
           {loading ? t('upcoming.loading') : ' '}
         </div>
       )}
       {!cursor && items.length > 0 && (
-        <p className="mt-6 text-center text-xs text-muted">{t('upcoming.endOfFeed')}</p>
+        <p className="mt-2 text-center text-xs text-muted">{t('upcoming.endOfFeed')}</p>
       )}
       {error && <p className="mt-3 text-center text-sm text-danger">{error}</p>}
     </div>
   );
-}
-
-function formatHeader(date: Date, locale: string): string {
-  const fmt = new Intl.DateTimeFormat(locale, {
-    weekday: 'short',
-    day: '2-digit',
-    month: 'short',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-  return fmt.format(date);
 }
