@@ -1,17 +1,11 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 
 import { container } from '@/infrastructure/di/container';
 import { Container } from '@/presentation/components/ui/Container';
 import { EmptyState } from '@/presentation/components/ui/EmptyState';
 import { PageHero } from '@/presentation/components/ui/PageHero';
-
-// Leaflet touches `window`, so the map has to be a client-only island.
-const ChurchMap = dynamic(
-  () => import('@/presentation/components/ChurchMap').then((m) => m.ChurchMap),
-  { ssr: false, loading: () => <div className="h-[60vh] w-full animate-pulse rounded-lg bg-surface" /> },
-);
+import { ChurchMapLoader } from '@/presentation/components/ChurchMapLoader';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -39,7 +33,7 @@ export default async function MapPage({ params }: PageProps) {
         {pins.length === 0 ? (
           <EmptyState title={t('noPins')} />
         ) : (
-          <ChurchMap pins={pins} locale={locale} />
+          <ChurchMapLoader pins={pins} locale={locale} />
         )}
       </Container>
     </>
