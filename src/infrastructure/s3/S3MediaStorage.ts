@@ -1,12 +1,15 @@
-import { DeleteObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-
 import {
   MediaStorage,
   PresignUploadInput,
   PresignedUpload,
 } from '@/application/ports/MediaStorage';
 import { randomToken } from '@/shared/uuid';
+
+// AWS SDK is loaded lazily inside the methods so importing this module is
+// cheap. That keeps routes that never touch S3 (most of the app) from
+// dragging the SDK into their bundle / cold start.
+type S3ClientCtor = typeof import('@aws-sdk/client-s3').S3Client;
+type S3ClientInstance = InstanceType<S3ClientCtor>;
 
 interface S3Config {
   bucket: string;
@@ -24,7 +27,7 @@ interface S3Config {
  * restarting just to pick up credentials.
  */
 export class S3MediaStorage implements MediaStorage {
-  private client: S3Client | null = null;
+  private client: S3ClientInstance | null = null;
   private clientFor: { region: string; key?: string } | null = null;
 
   private readConfig(): S3Config {
@@ -42,8 +45,7 @@ export class S3MediaStorage implements MediaStorage {
     };
   }
 
-  private getClient(cfg: S3Config): S3Client {
-    // Reuse client when region+key haven't changed across calls.
+  private async getClient(cfg: S3Config): Promise<S3ClientInstance> {
     const cacheKey = { region: cfg.region, key: cfg.accessKeyId };
     if (
       this.client &&
@@ -52,6 +54,7 @@ export class S3MediaStorage implements MediaStorage {
     ) {
       return this.client;
     }
+    const { S3Client } = await import('@aws-sdk/client-s3');
     this.client = new S3Client({
       region: cfg.region || undefined,
       credentials:
@@ -83,6 +86,11 @@ export class S3MediaStorage implements MediaStorage {
       'bin';
     const key = `media/${new Date().getFullYear()}/${randomToken(12)}.${ext}`;
 
+    const [{ PutObjectCommand }, { getSignedUrl }] = await Promise.all([
+      import('@aws-sdk/client-s3'),
+      import('@aws-sdk/s3-request-presigner'),
+    ]);
+
     const command = new PutObjectCommand({
       Bucket: cfg.bucket,
       Key: key,
@@ -90,7 +98,8 @@ export class S3MediaStorage implements MediaStorage {
       ContentLength: input.sizeBytes,
     });
 
-    const uploadUrl = await getSignedUrl(this.getClient(cfg), command, { expiresIn: 60 * 5 });
+    const client = await this.getClient(cfg);
+    const uploadUrl = await getSignedUrl(client, command, { expiresIn: 60 * 5 });
     const publicUrl = `${cfg.publicBaseUrl.replace(/\/$/, '')}/${key}`;
     return { uploadUrl, publicUrl };
   }
@@ -102,9 +111,9 @@ export class S3MediaStorage implements MediaStorage {
       const url = new URL(publicUrl);
       const key = url.pathname.replace(/^\//, '');
       if (!key) return;
-      await this.getClient(cfg).send(
-        new DeleteObjectCommand({ Bucket: cfg.bucket, Key: key }),
-      );
+      const { DeleteObjectCommand } = await import('@aws-sdk/client-s3');
+      const client = await this.getClient(cfg);
+      await client.send(new DeleteObjectCommand({ Bucket: cfg.bucket, Key: key }));
     } catch {
       // best-effort
     }

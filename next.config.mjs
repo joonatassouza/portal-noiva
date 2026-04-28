@@ -7,6 +7,14 @@ const nextConfig = {
   reactStrictMode: true,
   // typedRoutes will be re-enabled once all locale routes (eventos, painel, etc.)
   // exist in the App Router. For now it false-positives on links to in-progress pages.
+  // Keep AWS SDK as an external package — Next.js shouldn't try to bundle it.
+  // Avoids ESM/CJS interop bugs with @aws-sdk/xml-builder on the Vercel runtime.
+  serverExternalPackages: [
+    '@aws-sdk/client-s3',
+    '@aws-sdk/s3-request-presigner',
+    'mongodb',
+    '@auth/mongodb-adapter',
+  ],
   images: {
     remotePatterns: [
       // S3 bucket (media uploads) — to be configured.
